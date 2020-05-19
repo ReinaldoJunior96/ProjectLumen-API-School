@@ -35,4 +35,25 @@ class AlunoController extends Controller
             return response()->json(['Mensagem' => 'Ocorreu um erro durante o cadastro!!']);
         }
     }
+
+    public function update(Request $request, $aluno)
+    {
+        try {
+            $aluno = Aluno::find($aluno);
+            $aluno->update($request->all());
+            return response()->json(['Mensagem' => 'Aluno alterado com sucesso!!']);
+        } catch (QueryException $ex) {
+            return response()->json(['Mensagem' => 'Erro ao alterar aluno!!']);
+        }
+    }
+
+    public function delete($aluno){
+        try {
+            $aluno_d = Aluno::find($aluno);
+            $aluno_d->delete();
+            return response()->json(['Mensagem' => 'Aluno deletado com sucesso!!']);
+        } catch (QueryException $ex) {
+            return response()->json(['Mensagem' => 'Erro ao deletar aluno!!']);
+        }
+    }
 }
