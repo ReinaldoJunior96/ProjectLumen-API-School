@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\User;
+use App\{User, Aluno};
 use Faker\Generator as Faker;
 
 /*
@@ -22,3 +22,12 @@ $factory->define(User::class, function (Faker $faker) {
         'email' => $faker->email,
     ];
 });
+
+$factory->define(Aluno::class, function (Faker $faker) {
+    return [
+        'nome'      => $faker->name,
+        'email'     => $faker->email,
+        'endereco'  => $faker->paragraph
+    ];
+});
+

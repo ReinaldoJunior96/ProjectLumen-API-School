@@ -17,8 +17,7 @@ $router->get('/', function () use ($router) {
     return "Project Lumen API School ;D";
 });
 
-$router->group(['prefix'=>'alunos'], function() use($router){
-    
+$router->group(['prefix'=>'alunos'], function() use($router){    
     $router->get('/','AlunoController@index'); /* Retorna todos os alunos */
     $router->get('/{aluno}', 'AlunoController@show'); /* Retorna apenas um aluno */
     $router->post('/', 'AlunoController@store'); /* Faz uma nova requisição para criar um novo aluno  */
