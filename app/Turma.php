@@ -1,20 +1,22 @@
 <?php
 
 namespace App;
-use App\Aluno;
+
 use Illuminate\Database\Eloquent\Model;
-class Nota extends Model{
+class Turma extends Model{
     public $timestamps = false; /* Ignora os campos de criação e alteração banco de dados */
     //protected $fillable = ['nome,email,endereco'];
     protected $guarded = [];
-    protected $table = 'tbl_notas';
+
+    protected $table = 'tbl_turmas'; 
+
+    public function tutor(){
+        return $this->belongsTo(Tutor::class);
+    }
+
+    public function notas(){
+        return $this->hasMany(Nota::class);
+    }
     
 
-    public function aluno(){
-        return $this->belongsTo(Aluno::class);
-    }
-
-    public function turma(){
-        return $this->belongsTo(Turma::class);
-    }
 }

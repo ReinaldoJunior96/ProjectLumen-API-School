@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableTblAlunos extends Migration
+class CriarTabelaAlunos extends Migration
 {
     /**
      * Run the migrations.
@@ -29,6 +29,6 @@ class CreateTableTblAlunos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alunos');
+        Schema::dropIfExists('tbl_alunos');
     }
 }

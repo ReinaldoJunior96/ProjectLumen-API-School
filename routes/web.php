@@ -24,5 +24,7 @@ $router->group(['prefix'=>'alunos'], function() use($router){
     $router->put('/{aluno}', 'AlunoController@update'); /* Faz uma requisição para editar o aluno */
     $router->delete('/{aluno}', 'AlunoController@delete'); /* Requisição para deleter um aluno */
 
-    $router->get('/{aluno}/notas','AlunoController@listNota'); /* Retorna a nota de um aluno */
+    $router->get('/{aluno}/notas','AlunoController@aluno_notas'); /* Retorna a nota de um aluno */
+    $router->get('/{aluno}/turmas','AlunoController@aluno_turma');
+    $router->get('/{aluno}/turmas/tutores', 'AlunoController@aluno_tutor');
 });

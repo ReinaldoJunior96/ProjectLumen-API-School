@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use App\Aluno;
+use App\{Aluno, Nota, Turma};
 
 class AlunoController extends Controller
 {
@@ -58,22 +58,40 @@ class AlunoController extends Controller
         }
     }
 
-    public function listNotas($aluno)
+    public function aluno_notas($aluno)
     {
         return Aluno::find($aluno)->notas;
-        /* 
-            turmas = mtm-mat-4F , mtm-mat-3M, prt-mat-4F, prt-vesp-3M
+    }
 
-            
-            Aluno(id)->notas(turma_id,aluno_id, N1...N4) 
+    public function aluno_turma($aluno)
+    {
+        $turmas_arr = array();
+        $aluno_nota = Aluno::find($aluno)->notas;
+        $aluno_arr = json_decode($aluno_nota);
+        foreach ($aluno_arr as $value) :
+            array_push($turmas_arr, Nota::find($value->id)->turma);
+        endforeach;
+        $turmas_json = json_encode($turmas_arr);
+        return $turmas_json;
+    }
 
-        
-        
-        */
-
-
-
-
-
+    public function aluno_tutor($aluno)
+    {
+        $notas_id = array();
+        $turmas_id = array();
+        $tutores = array();
+        $aluno_nota = Aluno::find($aluno)->notas;
+        $aluno_arr = json_decode($aluno_nota);
+        foreach ($aluno_arr as $value) :
+            array_push($notas_id, $value->id);
+        endforeach;
+        foreach ($notas_id as $t) :
+            array_push($turmas_id, Nota::find($t)->turma);
+        endforeach;
+        foreach ($turmas_id as $v) :
+            array_push($tutores, Turma::find($v->id)->tutor);
+        endforeach;
+        $tutores_json = json_encode($tutores);
+        print_r($tutores_json);
     }
 }
