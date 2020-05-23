@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\{User, Aluno};
+use App\{User, Aluno, Nota};
 use Faker\Generator as Faker;
 
 /*
@@ -30,4 +30,6 @@ $factory->define(Aluno::class, function (Faker $faker) {
         'endereco'  => $faker->paragraph
     ];
 });
+
+
 

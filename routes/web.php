@@ -23,4 +23,6 @@ $router->group(['prefix'=>'alunos'], function() use($router){
     $router->post('/', 'AlunoController@store'); /* Faz uma nova requisição para criar um novo aluno  */
     $router->put('/{aluno}', 'AlunoController@update'); /* Faz uma requisição para editar o aluno */
     $router->delete('/{aluno}', 'AlunoController@delete'); /* Requisição para deleter um aluno */
+
+    $router->get('/{aluno}/notas','AlunoController@listNota'); /* Retorna a nota de um aluno */
 });

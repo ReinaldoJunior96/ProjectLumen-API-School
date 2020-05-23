@@ -47,7 +47,8 @@ class AlunoController extends Controller
         }
     }
 
-    public function delete($aluno){
+    public function delete($aluno)
+    {
         try {
             $aluno_d = Aluno::find($aluno);
             $aluno_d->delete();
@@ -55,5 +56,24 @@ class AlunoController extends Controller
         } catch (QueryException $ex) {
             return response()->json(['Mensagem' => 'Erro ao deletar aluno!!']);
         }
+    }
+
+    public function listNotas($aluno)
+    {
+        return Aluno::find($aluno)->notas;
+        /* 
+            turmas = mtm-mat-4F , mtm-mat-3M, prt-mat-4F, prt-vesp-3M
+
+            
+            Aluno(id)->notas(turma_id,aluno_id, N1...N4) 
+
+        
+        
+        */
+
+
+
+
+
     }
 }
