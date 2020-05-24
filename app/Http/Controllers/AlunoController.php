@@ -92,6 +92,6 @@ class AlunoController extends Controller
             array_push($tutores, Turma::find($v->id)->tutor);
         endforeach;
         $tutores_json = json_encode($tutores);
-        print_r($tutores_json);
+        return $tutores_json;
     }
 }
