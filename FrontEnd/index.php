@@ -27,6 +27,12 @@
 </head>
 
 <body>
+<pre>
+<?php 
+print_r($resposta);
+?>
+</pre>
+
     <div class="container mt-5">
         <ul class="nav nav-pills nav-fill">
             <li class="nav-item">

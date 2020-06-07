@@ -21,6 +21,7 @@ class AlunoController extends Controller
     {
         return Aluno::all();
     }
+
     public function show($aluno)
     {
         return (Aluno::find($aluno) == NULL) ? 'Aluno não encontrado' : Aluno::find($aluno);
